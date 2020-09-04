@@ -24,4 +24,6 @@ class ShapeSettings: ObservableObject {
     @Published var scale = 0.5
     
     @Published var shapeCount = 1
+    
+    @Published var showShapes = true
 }

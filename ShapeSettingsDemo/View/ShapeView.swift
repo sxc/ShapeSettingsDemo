@@ -14,12 +14,17 @@ struct ShapeView: View {
         NavigationView {
             
             VStack {
-                ForEach(0..<shapeSettings.shapeCount, id: \.self) { _ in
-                    InnerShape(chosenShapen: shapeSettings.chosenShape)
-                        .scale(CGFloat(shapeSettings.scale))
-                        .foregroundColor(ShapeSettings.Colors[shapeSettings.choseColor])
+                if shapeSettings.showShapes {
+                    ForEach(0..<shapeSettings.shapeCount, id: \.self) { _ in
+                        InnerShape(chosenShapen: shapeSettings.chosenShape)
+                            .scale(CGFloat(shapeSettings.scale))
+                            .foregroundColor(ShapeSettings.Colors[shapeSettings.choseColor])
+                        
+                    }
                     
                 }
+                
+                
             }
             
             
