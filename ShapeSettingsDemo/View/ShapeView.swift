@@ -8,18 +8,19 @@
 import SwiftUI
 
 struct ShapeView: View {
-    @State var showSettings = false
+    @ObservedObject var shapeSettings = ShapeSettings()
     
     var body: some View {
         NavigationView {
             InnerShape()
+                .foregroundColor(ShapeSettings.Colors[shapeSettings.choseColor])
                 .navigationBarItems(trailing: Button(action: {
-                    self.showSettings = true
+                    self.shapeSettings.showSettings = true
                 }, label: {
                     Text("Settings")
                 }))
-                .sheet(isPresented: $showSettings, content: {
-                    SettingsView()
+                .sheet(isPresented: $shapeSettings.showSettings, content: {
+                    SettingsView(shapeSettings: shapeSettings)
                 })
         }
     }

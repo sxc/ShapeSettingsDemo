@@ -9,9 +9,18 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.presentationMode) var presentationMode
+    
+    @ObservedObject var shapeSettings: ShapeSettings
     var body: some View {
         NavigationView {
-            Text("Settings Go Here!")
+            Form {
+                Picker(selection: $shapeSettings.choseColor, label: Text("Color"), content: /*@START_MENU_TOKEN@*/{
+                    ForEach(0..<ShapeSettings.Colors.count, id: \.self) { index in
+                        Text("\(ShapeSettings.Colors[index].description)")
+                            .tag(index)
+                    }
+                }/*@END_MENU_TOKEN@*/)
+            }
                 .navigationBarTitle("Settings")
                 .navigationBarItems(trailing: Button(action: {
                     self.presentationMode.wrappedValue.dismiss()
@@ -23,8 +32,8 @@ struct SettingsView: View {
     }
 }
 
-struct SettingsView_Previews: PreviewProvider {
-    static var previews: some View {
-        SettingsView()
-    }
-}
+//struct SettingsView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        SettingsView(shapeSettings: shapeSettings)
+//    }
+//}

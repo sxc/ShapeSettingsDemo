@@ -9,5 +9,9 @@ import Foundation
 import SwiftUI
 
 class ShapeSettings: ObservableObject {
-    @Published var showSettings = false 
+    @Published var showSettings = false
+    
+    static var Colors = [Color.red, Color.blue, Color.green, Color.purple, Color.orange]
+    
+    @Published var choseColor = 0
 }
