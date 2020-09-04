@@ -12,9 +12,17 @@ struct ShapeView: View {
     
     var body: some View {
         NavigationView {
-            InnerShape(chosenShapen: shapeSettings.chosenShape)
-                .scale(CGFloat(shapeSettings.scale))
-                .foregroundColor(ShapeSettings.Colors[shapeSettings.choseColor])
+            
+            VStack {
+                ForEach(0..<shapeSettings.shapeCount, id: \.self) { _ in
+                    InnerShape(chosenShapen: shapeSettings.chosenShape)
+                        .scale(CGFloat(shapeSettings.scale))
+                        .foregroundColor(ShapeSettings.Colors[shapeSettings.choseColor])
+                    
+                }
+            }
+            
+            
                 .navigationBarItems(trailing: Button(action: {
                     self.shapeSettings.showSettings = true
                 }, label: {

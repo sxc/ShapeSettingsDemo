@@ -41,6 +41,11 @@ struct SettingsView: View {
                 }
                 
                 
+                Stepper(value: $shapeSettings.shapeCount, in: 1...10) {
+                    Text("Count: \(shapeSettings.shapeCount)")
+                }
+
+                
                 
             }
                 .navigationBarTitle("Settings")
