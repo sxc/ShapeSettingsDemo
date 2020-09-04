@@ -12,7 +12,7 @@ struct ShapeView: View {
     
     var body: some View {
         NavigationView {
-            InnerShape()
+            InnerShape(chosenShapen: shapeSettings.chosenShape)
                 .foregroundColor(ShapeSettings.Colors[shapeSettings.choseColor])
                 .navigationBarItems(trailing: Button(action: {
                     self.shapeSettings.showSettings = true
@@ -27,8 +27,15 @@ struct ShapeView: View {
 }
 
 struct InnerShape: Shape {
+    var chosenShapen: ShapeSettings.Shapes
+    
     func path(in rect: CGRect) -> Path {
-        Circle().path(in: rect)
+        switch chosenShapen {
+        case .Circle:
+            return Circle().path(in: rect)
+        default:
+            return Rectangle().path(in: rect)
+        }
     }
 }
 

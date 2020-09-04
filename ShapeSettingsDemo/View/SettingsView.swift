@@ -20,6 +20,16 @@ struct SettingsView: View {
                             .tag(index)
                     }
                 }/*@END_MENU_TOKEN@*/)
+                
+                Picker(selection: $shapeSettings.chosenShape, label: Text("Shape"), content: {
+                    ForEach(ShapeSettings.Shapes.allCases, id: \.self) { shape in
+                        Text("\(shape.rawValue)")
+                            .tag(shape)
+                        
+                    }
+                })
+                .pickerStyle(SegmentedPickerStyle())
+                
             }
                 .navigationBarTitle("Settings")
                 .navigationBarItems(trailing: Button(action: {
