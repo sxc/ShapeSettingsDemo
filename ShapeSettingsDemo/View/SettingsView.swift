@@ -30,6 +30,18 @@ struct SettingsView: View {
                 })
                 .pickerStyle(SegmentedPickerStyle())
                 
+                HStack {
+                    Text("Size")
+                    Image(systemName: "circle.fill")
+                        .imageScale(.small)
+                    Slider(value: $shapeSettings.scale, in: 0...1)
+                    Image(systemName: "circle.fill")
+                        .imageScale(.large)
+                    
+                }
+                
+                
+                
             }
                 .navigationBarTitle("Settings")
                 .navigationBarItems(trailing: Button(action: {

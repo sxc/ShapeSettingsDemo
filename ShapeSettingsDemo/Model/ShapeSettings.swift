@@ -20,4 +20,6 @@ class ShapeSettings: ObservableObject {
     }
     
     @Published var chosenShape = Shapes.Circle
+    
+    @Published var scale = 0.5
 }
